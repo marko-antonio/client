@@ -21,7 +21,7 @@ function App() {
       {/* Navbar component */}
       <Navbar />
       <Router>
-        <Stack direction="row" spacing={2} justifyContent="space-between">
+        <Stack direction="row" justifyContent="space-between">
           {/* sidebar component */}
           <Box flex={1} p={2} >
             <List>
@@ -63,7 +63,7 @@ function App() {
             </List>
           </Box>
           {/* feed component */}
-          <Box flex={5} p={2}>
+          <Box flex={5} p={2} justifyContent="space-between">
             <Routes >
               <Route exact path="/dashboard" element={<Dashboard />} />
               <Route exact path="/thesis" element={<Thesis />} />
