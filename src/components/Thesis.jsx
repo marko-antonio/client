@@ -1,6 +1,7 @@
-import { Box, Typography } from '@mui/material';
-import { DataGrid, GridValueGetterParams,GridColDef } from '@mui/x-data-grid';
+import { Box, Button, Stack, Typography } from '@mui/material';
+import { DataGrid, GridValueGetterParams, GridColDef } from '@mui/x-data-grid';
 import * as React from 'react';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 const Columns: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 90 },
@@ -49,9 +50,15 @@ const Rows = [
 function Thesis() {
   return (
     <Box sx={{ height: 400, width: '100%', justifyContent: "space-between"}}>
+      <Stack justifyContent="space-between" direction="row" spacing={2} marginBottom={1} marginTop={2}>
       <Typography variant="h6" component="h5">
         Thesis
       </Typography>
+        <Button variant="contained" endIcon={<AddCircleIcon />}>
+          Request New
+        </Button>
+      </Stack>
+
       <DataGrid
         rows={Rows}
         columns={Columns}
