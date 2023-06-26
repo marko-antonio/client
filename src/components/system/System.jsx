@@ -1,8 +1,6 @@
 import { Box } from '@mui/material'
 import React from 'react'
 
-import Account from './Account';
-
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
