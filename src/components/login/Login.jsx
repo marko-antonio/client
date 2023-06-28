@@ -4,6 +4,7 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
+import Loginform from './LoginForm';
 
 
 function Login() {
@@ -23,12 +24,11 @@ function Login() {
             </TabList>
           </Box>
           <TabPanel value="1">
-            asdasdas
+            <Loginform/>
           </TabPanel>
           <TabPanel value="2">
             Item Two
           </TabPanel>
-
         </TabContext>
       </Card>
     </Box>
