@@ -1,36 +1,39 @@
+import { Box, Card } from '@mui/material'
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import Loginform from './Loginform'
-import Register from './Register'
-import { Card, CardContent, Stack } from '@mui/material'
+import Tab from '@mui/material/Tab';
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
 
-function Index() {
+
+function Login() {
+  const [value, setValue] = React.useState('1');
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
   return (
 
-    <Stack
-      spacing={2}
-      useFlexGap flexWrap="wrap"
-      margin="20px auto"
-      direction="row"
-      justifyContent="center"
-      alignItems="center">
+    <Box sx={{ width: '25%', typography: 'body1', marginTop: 15 }}>
+      <Card>
+        <TabContext value={value}>
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <TabList onChange={handleChange} aria-label="lab API tabs example">
+              <Tab label="Login" value="1" />
+              <Tab label="Sign Up" value="2" />
+            </TabList>
+          </Box>
+          <TabPanel value="1">
+            asdasdas
+          </TabPanel>
+          <TabPanel value="2">
+            Item Two
+          </TabPanel>
 
-      <Card sx={{ minWidth: 275 }} variant="outlined">
-        <CardContent>
-          <Router>
-            <Routes>
-              <Route exact path='/login' element={<Loginform />} />
-              <Route exact path='/register' element={<Register />} />
-            </Routes>
-            <Stack direction="row" justifyContent='space-between'>
-              <Link to="/login">Login</Link>
-              <Link to="/register">Register</Link>
-            </Stack>
-          </Router>
-        </CardContent>
+        </TabContext>
       </Card>
-    </Stack>
+    </Box>
+
   )
 }
 
-export default Index
+export default Login

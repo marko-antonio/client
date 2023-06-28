@@ -1,14 +1,17 @@
 import React from 'react'
-import Login from './components/login/Login'
-import Sidebar from './components/Sidebar'
+import Stack from '@mui/material/Stack';
+import Login from './components/login/Login';
 
 function App() {
   return (
-  <div>
-  <Sidebar/>
-  </div>
+    <Stack
+      direction="row"
+      justifyContent="center"
+      alignItems="center"
+      spacing={2}>
+      <Login/>
+    </Stack>
   )
 }
 
 export default App
-
