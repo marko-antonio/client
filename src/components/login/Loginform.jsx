@@ -3,7 +3,7 @@ import React from 'react'
 import { useState } from 'react'
 
 
-function Loginform() {
+function LoginForm() {
 
   const [formValues, SetFormValues] = useState({
     firstname: "",
@@ -85,4 +85,4 @@ function Loginform() {
   )
 }
 
-export default Loginform
+export default LoginForm
