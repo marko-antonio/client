@@ -2,12 +2,15 @@ import { Box, Button, Divider, Stack, TextField } from '@mui/material'
 import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function RegistrationForm() {
+  const [buttonStatus, setButtonStatus]= useState(false);
   const [formValues, SetFormValues] = useState({
-    first_name: "",
-    mid_name: "",
-    last_name: "",
+    firstname: "",
+    midname: "",
+    lastname: "",
     email: "",
     contact: "",
     username: "",
@@ -23,16 +26,27 @@ function RegistrationForm() {
       firstname: formValues.firstname,
       middlename: formValues.middlename,
       lastname: formValues.lastname,
-      account_status: 1,
+      status: 1,
       email: formValues.email,
       username: formValues.username,
       password: formValues.password,
     }
     axios.post('http://localhost:5010/crdis/registration/create', newData)
       .then((res) => {
-        console.log(res.data)
-        // clear textfields after submission
-        SetFormValues('');
+        //console.log(res.data)
+         // clear textfields after submission
+        setButtonStatus(true);
+        toast.success('👌Request successfully submitted!!', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+          
       }).catch((error) => {
         console.log(error)
       });
@@ -52,6 +66,7 @@ function RegistrationForm() {
         <form onSubmit={handleSubmit}>
           <div align="center">
             <TextField
+              required
               id="outlined-basic"
               label="First Name"
               variant="outlined"
@@ -60,6 +75,7 @@ function RegistrationForm() {
               onChange={handleInput} />
 
             <TextField
+              required
               id="outlined-basic"
               label="Middle Name"
               variant="outlined"
@@ -67,6 +83,7 @@ function RegistrationForm() {
               value={formValues.middlename}
               onChange={handleInput} />
             <TextField
+              required
               id="outlined-basic"
               label="Last Name"
               variant="outlined"
@@ -74,6 +91,7 @@ function RegistrationForm() {
               value={formValues.lastname}
               onChange={handleInput} />
             <TextField
+              required
               id="outlined-basic"
               label="Email"
               variant="outlined"
@@ -83,6 +101,7 @@ function RegistrationForm() {
               onChange={handleInput} />
             <Divider variant="middle" />
             <TextField
+              required
               id="outlined-basic"
               label="Username"
               variant="outlined"
@@ -90,6 +109,7 @@ function RegistrationForm() {
               value={formValues.username}
               onChange={handleInput} />
             <TextField
+              required
               id="outlined-basic"
               label="Password"
               variant="outlined"
@@ -103,6 +123,7 @@ function RegistrationForm() {
           <Box textAlign={'center'} marginTop={5}>
             <div>
               <Button
+                disabled={buttonStatus}
                 variant="contained"
                 alignItems="center"
                 type='submit'>
@@ -112,6 +133,7 @@ function RegistrationForm() {
           </Box>
         </form>
       </Box>
+      <ToastContainer />
     </Stack>
   )
 }
